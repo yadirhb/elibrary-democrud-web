@@ -9,12 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
+//@Service(value = "MainBookService")
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -48,6 +46,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBookById(Integer bookId) {
         repository.deleteById(bookId);
+    }
+
+    @Override
+    public Optional<Book> findByISBN(String isbn) {
+        return repository.findBookByIsbn(isbn);
     }
 
 }

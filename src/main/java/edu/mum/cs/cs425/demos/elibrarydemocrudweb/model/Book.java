@@ -1,5 +1,6 @@
 package edu.mum.cs.cs425.demos.elibrarydemocrudweb.model;
 
+import edu.mum.cs.cs425.demos.elibrarydemocrudweb.model.validators.UniqueISBN;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookId;
-    //@UniqueISBN
+    @UniqueISBN(message = "Hello")
     @NotBlank(message = "* ISBN is required")
     @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
